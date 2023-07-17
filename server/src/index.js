@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const Client = require("./models/Decks");
+const Client = require("./models/Client");
 require("dotenv").config();
 
 const app = express();
@@ -18,12 +18,25 @@ mongoose.connect(process.env.MONGO_URL).then(() => {
   app.listen(PORT);
 });
 
-// use post b/c we gonna create new client
+// Use post when push data
+// Use get when get/fetch data from somewhere
 //
+
+app.get('/clients', async (req, res) => {
+  // fetch all clients from database and send back to the UI
+  //
+  const clients = await Client.find();
+
+  // send back to UI
+  //
+  res.json(clients)
+
+})
+
 app.post("/clients", async (req, res) => {
 
   const newClient = new Client({
-    title: req.body.clientName,
+    name: req.body.clientName,
   });
 
   // save to the database
@@ -32,3 +45,15 @@ app.post("/clients", async (req, res) => {
   // return the new client(object) to the user
   res.json(createdClient);
 });
+
+app.delete("/clients/:clientId", async (req, res) => {
+  // get the id from URL
+  const clientId = req.params.clientId;
+
+  // delete client from database
+  const client = await Client.findByIdAndDelete(clientId);
+
+  // return the deleted client
+  res.json(client);
+})
+

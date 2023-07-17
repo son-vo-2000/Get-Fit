@@ -1,35 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./Home";
+import MainApp from "./MainApp";
+import Header from "./Header";
+import ClientDetails from "./ClientExercises";
 
-function App() {
-  const [clients, setClients] = useState("");
-  const [clientName, setClientName] = useState("");
-
-  const handleCreateClient = async (event) => {
-    event.preventDefault();
-
-    // talk to the back-end at /clients
-    await fetch("http://localhost:5000/clients", {
-      method: "POST",
-      body: JSON.stringify({ clientName }),
-      headers: { "Content-Type": "application/json" },
-    });
-
-    setClientName("");
-  };
-
+function App(props) {
   return (
-    <div className="App" onSubmit={handleCreateClient}>
-      <form>
-        <label htmlFor="client-name">New Client</label>
-        <input
-          id="client-name"
-          type="text"
-          value={clientName}
-          onChange={(e) => setClientName(e.target.value)}
-        />
-        <button>Create</button>
-      </form>
-    </div>
+    <main>
+      <Header />
+      <Routes>
+        <Route exact path="/" Component={Home} />
+        <Route path="/main" Component={MainApp} />
+        <Route path="/main/clients/:clientId" Component={ClientDetails} />
+      </Routes>
+    </main>
   );
 }
 
