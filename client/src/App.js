@@ -3,7 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import MainApp from "./MainApp";
 import Header from "./Header";
-import ClientDetails from "./ClientExercises";
+import ClientExercises from "./ClientExercises";
+import './styles/App.css'
 
 function App(props) {
   return (
@@ -12,7 +13,7 @@ function App(props) {
       <Routes>
         <Route exact path="/" Component={Home} />
         <Route path="/main" Component={MainApp} />
-        <Route path="/main/clients/:clientId" Component={ClientDetails} />
+        <Route path="/main/clients/:clientId" Component={ClientExercises} />
       </Routes>
     </main>
   );

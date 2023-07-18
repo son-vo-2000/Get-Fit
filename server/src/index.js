@@ -6,7 +6,7 @@ require("dotenv").config();
 
 const app = express();
 app.use(express.json());
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors({ origin: "*" }));
 
 const PORT = 5000;
 
@@ -22,19 +22,17 @@ mongoose.connect(process.env.MONGO_URL).then(() => {
 // Use get when get/fetch data from somewhere
 //
 
-app.get('/clients', async (req, res) => {
+app.get("/clients", async (req, res) => {
   // fetch all clients from database and send back to the UI
   //
   const clients = await Client.find();
 
   // send back to UI
   //
-  res.json(clients)
-
-})
+  res.json(clients);
+});
 
 app.post("/clients", async (req, res) => {
-
   const newClient = new Client({
     name: req.body.clientName,
   });
@@ -55,5 +53,41 @@ app.delete("/clients/:clientId", async (req, res) => {
 
   // return the deleted client
   res.json(client);
-})
+});
 
+app.post("/clients/:clientId/exercises", async (req, res) => {
+  // find and fetch/get the matched clientId from database
+  //
+  const clientId = req.params.clientId;
+  const client = await Client.findById(clientId);
+
+  if (!client) return res.status(400).send("No ");
+
+  const { exerciseName, duration } = req.body;
+  client.exercises.push({ name: exerciseName, duration: duration });
+  await client.save();
+  res.json(client);
+});
+
+app.get("/clients/:clientId/exercises", async (req, res) => {
+  // find and fetch/get the matched clientId from database
+  //
+  const clientId = req.params.clientId;
+  const client = await Client.findById(clientId);
+  if (!client) return res.status(400).send("No ");
+  
+  // send back to UI
+  //
+  res.json(client);
+});
+
+app.delete("/clients/:clientId/exercises/:index", async (req, res) => {
+  const clientId = req.params.clientId
+  const client = await Client.findById(clientId)
+  const index = req.params.index;
+  if (!client) return res.status(400).send("No client found")
+  
+  client.exercises.splice(parseInt(index), 1)
+  await client.save()
+  res.json(client)
+})

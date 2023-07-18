@@ -1,20 +1,22 @@
-import React from 'react';
-import {Link} from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
+import "./styles/Clients.css";
 
 function Clients({ clients, handleDelete }) {
   return (
-    <div className="clients">
-      <ul className="clients-card-container">
-        {clients.map((client) => (
-          <div key={client._id}>
-            <li className="clients-card">
-              <Link to={`clients/${client._id}`} >{client.title}</Link>
-            </li>
-            <button onClick={() => handleDelete(client._id)}>delete</button>
+    <ul className="clients-card-container">
+      {clients.map((client) => (
+        <div className="clients-card" key={client._id}>
+          <i class="fa-solid fa-x" onClick={() => handleDelete(client._id)}></i>
+          <li className="clients">{client.name}</li>
+          <div className="function-buttons">
+            <Link className="btn-exercise" to={`clients/${client._id}`}>
+              Exercises <i class="fa-solid fa-arrow-right"></i>
+            </Link>
           </div>
-        ))}
-      </ul>
-    </div>
+        </div>
+      ))}
+    </ul>
   );
 }
 

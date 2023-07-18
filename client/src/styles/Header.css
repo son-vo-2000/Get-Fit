@@ -1,0 +1,36 @@
+header {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: 1.2rem;  
+}
+.logo {
+  flex: 1;
+  font-weight: bold;
+  font-size: 1.6rem;  
+  display: flex;
+  align-items: center;
+  gap: 13px
+}
+.logo img {
+    height: 40px;
+    width: 40px;
+}
+nav {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+nav .start{
+    background-color: rgb(18, 160, 18);
+    color: white;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}

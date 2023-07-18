@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Clients from "./Clients";
+import './styles/App.css'
+import AddClientModal from "./AddClientModal";
 
 function MainApp() {
   const [clients, setClients] = useState([]);
   const [clientName, setClientName] = useState("");
+  const [modal,setModal] = useState(true)
 
   // fetch all clients from the backend
   useEffect(() => {
@@ -47,20 +50,22 @@ function MainApp() {
     setClients(clients.filter((client) => client._id !== clientId));
   };
 
-  
+  const toggleModal = () => {
+    setModal(!modal)
+  }
 
   return (
     <div className="App" onSubmit={handleCreateClient}>
-      <form>
-        <label htmlFor="client-name">New Client</label>
-        <input
-          id="client-name"
-          type="text"
-          value={clientName}
-          onChange={(e) => setClientName(e.target.value)}
-        />
-        <button>Create</button>
-      </form>
+      <div className="top-section">
+        <h2>My Clients</h2>
+        <button onClick={toggleModal}>Add Client</button>
+      </div>
+      <AddClientModal
+        toggleModal={toggleModal}
+        clientName={clientName}
+        setClientName={setClientName}
+        open={modal}
+      />
       <Clients clients={clients} handleDelete={handleDelete} />
     </div>
   );
