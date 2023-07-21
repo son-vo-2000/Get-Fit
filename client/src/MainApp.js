@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Clients from "./Clients";
-import './styles/App.css'
+import "./styles/App.css";
 import AddClientModal from "./AddClientModal";
 
 function MainApp() {
   const [clients, setClients] = useState([]);
   const [clientName, setClientName] = useState("");
-  const [modal,setModal] = useState(true)
+  const [modal, setModal] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   // fetch all clients from the backend
   useEffect(() => {
+    setLoading(true);
     async function fetchClients() {
       // remember fectch return object that has json method
       // so u need to convert json
@@ -20,6 +22,7 @@ function MainApp() {
       setClients(allClients);
     }
     fetchClients();
+    setLoading(false);
   }, []);
 
   // create new client
@@ -38,6 +41,7 @@ function MainApp() {
     setClients([...clients, newClient]);
 
     setClientName("");
+    toggleModal();
   };
 
   // delete client
@@ -51,11 +55,24 @@ function MainApp() {
   };
 
   const toggleModal = () => {
-    setModal(!modal)
-  }
+    setModal(!modal);
+    if (modal !== true) {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      const scrollLeft =
+        window.pageXOffset || document.documentElement.scrollLeft;
+      // if any scroll is attempted,
+      // set this to the previous value
+      window.onscroll = function () {
+        window.scrollTo(scrollLeft, scrollTop);
+      };
+    } else {
+      window.onscroll = function () {};
+    }
+  };
 
   return (
-    <div className="App" onSubmit={handleCreateClient}>
+    <div className="App">
       <div className="top-section">
         <h2>My Clients</h2>
         <button onClick={toggleModal}>Add Client</button>
@@ -64,9 +81,14 @@ function MainApp() {
         toggleModal={toggleModal}
         clientName={clientName}
         setClientName={setClientName}
+        handleCreateClient={handleCreateClient}
         open={modal}
       />
-      <Clients clients={clients} handleDelete={handleDelete} />
+      {loading ? (
+        <div>loading...</div>
+      ) : (
+        <Clients clients={clients} handleDelete={handleDelete} />
+      )}
     </div>
   );
 }

@@ -91,3 +91,16 @@ app.delete("/clients/:clientId/exercises/:index", async (req, res) => {
   await client.save()
   res.json(client)
 })
+
+app.post("/clients/:clientId/exercises/:index", async (req, res) => {
+  const { exerciseName, duration } = req.body;
+  const clientId = req.params.clientId;
+  const client = await Client.findById(clientId)
+  const index = req.params.index;
+  if (!client) return res.status(400).send("No client found");
+
+  client.exercises[index] = { name: exerciseName, duration: duration };
+
+  await client.save();
+  res.json(client);
+});

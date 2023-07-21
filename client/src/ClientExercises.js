@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Clients from "./Clients";
+import AddExerciseModal from "./AddExerciseModal";
+import "./styles/Exercises.css";
+import EditExerciseModal from "./EditExerciseModal";
 
 function ClientExercises() {
   const [exerciseName, setExcerciseName] = useState("");
   const [duration, setDuration] = useState("");
   const [completed, setCompleted] = useState(false);
   const [cards, setCards] = useState([]);
-  const [client, setClient] = useState('')
+  const [client, setClient] = useState("");
+  const [modal, setModal] = useState(false);
+  const [editModal, setEditModal] = useState(false);
   const { clientId } = useParams();
+  const [editIndex, setEditIndex] = useState("");
 
   // fetch all exercise cards from the backend
   useEffect(() => {
@@ -40,48 +45,134 @@ function ClientExercises() {
     setCards(serverCard.exercises);
     setDuration("");
     setExcerciseName("");
+    toggleModal();
   };
 
   // delete card
   const handleDeleteCard = async (index) => {
     if (!clientId) return;
-    const updatedCards = await fetch(`http://localhost:5000/clients/${clientId}/exercises/${index}`, {
-      method: "DELETE",
-    }).then(reponse => reponse.json());
+    const updatedCards = await fetch(
+      `http://localhost:5000/clients/${clientId}/exercises/${index}`,
+      {
+        method: "DELETE",
+      },
+    ).then((reponse) => reponse.json());
 
     //update cards UI
-    setCards(updatedCards.exercises)
+    setCards(updatedCards.exercises);
+  };
+
+  //Edit card
+  const handleEditCard = async (event) => {
+    event.preventDefault();
+    if (!clientId) return;
+
+    const updatedCards = await fetch(
+      `http://localhost:5000/clients/${clientId}/exercises/${editIndex}`,
+      {
+        method: "POST",
+        body: JSON.stringify({ exerciseName, duration }),
+        headers: { "Content-Type": "application/json" },
+      },
+    ).then((reponse) => reponse.json());
+
+    //update cards UI
+
+    setCards(updatedCards.exercises);
+    setExcerciseName("");
+    setDuration("");
+    toggleEditModal();
+  };
+
+  const toggleModal = () => {
+    setModal(!modal);
+    if (modal !== true) {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      const scrollLeft =
+        window.pageXOffset || document.documentElement.scrollLeft;
+      // if any scroll is attempted,
+      // set this to the previous value
+      window.onscroll = function () {
+        window.scrollTo(scrollLeft, scrollTop);
+      };
+    } else {
+      window.onscroll = function () {};
+    }
+
+    setDuration("");
+    setExcerciseName("");
+  };
+  const toggleEditModal = (index) => {
+    setEditModal(!editModal);
+    if (editModal !== true) {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      const scrollLeft =
+        window.pageXOffset || document.documentElement.scrollLeft;
+      // if any scroll is attempted,
+      // set this to the previous value
+      window.onscroll = function () {
+        window.scrollTo(scrollLeft, scrollTop);
+      };
+    } else {
+      window.onscroll = function () {};
+    }
+
+    setEditIndex(index);
+    setDuration("");
+    setExcerciseName("");
   };
 
   return (
-    <div className="App" onSubmit={handleCreateExercise}>
-      <h1>{client.name}</h1>
-      <form>
-        <label htmlFor="exercise-name">New Exercise</label>
-        <input
-          id="exercise-name"
-          type="text"
-          value={exerciseName}
-          onChange={(e) => setExcerciseName(e.target.value)}
-        />
-        <label htmlFor="duration">Duration</label>
-        <input
-          id="duration"
-          type="text"
-          value={duration}
-          onChange={(e) => setDuration(e.target.value)}
-        />
-        <button>Create</button>
-      </form>
-      <ul className="clients-card-container">
-        {cards.map((card, index) => (
-          <div key={index}>
-            <li className="clients-card">{card.name}</li>
-            <li className="clients-card">{card.duration}</li>
-            <button onClick={() => handleDeleteCard(index)}>Delete</button>
-          </div>
-        ))}
-      </ul>
+    <div className="App">
+      <AddExerciseModal
+        exerciseName={exerciseName}
+        setExcerciseName={setExcerciseName}
+        duration={duration}
+        setDuration={setDuration}
+        toggleModal={toggleModal}
+        handleCreateExercise={handleCreateExercise}
+        open={modal}
+      />
+      <EditExerciseModal
+        exerciseName={exerciseName}
+        setExcerciseName={setExcerciseName}
+        duration={duration}
+        setDuration={setDuration}
+        toggleEditModal={toggleEditModal}
+        open={editModal}
+        handleEditCard={handleEditCard}
+        index={editIndex}
+      />
+      <section className="exercise-top-section">
+        <div>
+          <h1>{client.name}</h1>
+        </div>
+        <button onClick={toggleModal}>Create Exercise</button>
+      </section>
+
+      <table className="table">
+        <thead className="thead-light">
+          <tr>
+            <th>Description</th>
+            <th>Duration(in minutes)</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {cards.map((card, index) => (
+            <tr key={index}>
+              <td>{card.name}</td>
+              <td>{card.duration}</td>
+              <td>
+                <button onClick={() => handleDeleteCard(index)}>Delete</button>
+                <button onClick={() => toggleEditModal(index)}>edit</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
