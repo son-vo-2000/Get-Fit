@@ -1,0 +1,111 @@
+a {
+  text-decoration: none;
+  list-style: none;
+  color: black;
+}
+.app__navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0px;
+}
+.app__navbar-logo a {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: rgb(94, 94, 201);
+}
+.app__navbar-logo a img {
+  height: 40px;
+  width: 40px;
+  margin-right: 12px;
+}
+.app__navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  flex: 1;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.app__navbar-menu li {
+  display: flex;
+  flex-direction: column;
+}
+.app__navbar-menu li:after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 0;
+  background: transparent;
+  transition: width 0.4s ease, background-color 0.5s ease;
+}
+.app__navbar-menu li:hover:after {
+  width: 100%;
+  background: rgb(94, 94, 201);
+}
+.app__navbar-menu li a {
+  text-decoration: none;
+  transition: all 0.4s ease-in-out;
+}
+.app__navbar-menu li a:hover {
+  color: rgb(94, 94, 201);
+}
+
+.app__navbar-start {
+  background-color: rgb(94, 94, 201);
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.app__navbar-start a {
+  color: white;
+}
+
+.app__navbar-icon {
+  display: none;
+}
+
+@media screen and (max-width: 960px) {
+  .app__navbar-icon {
+    display: block;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+  .app__navbar-logo a {
+  font-size: 1rem;
+}
+  .app__navbar-menu {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    position: absolute;
+    top: 80px;
+    right: -110%;
+    opacity: 1;
+    transition: all 0.5s ease;
+    gap: 10px;
+    text-align: center;
+ 
+  }
+  #active {
+    right:0px;
+    opacity: 1;
+    z-index: 1;
+  }
+  .app__navbar-menu li {
+    padding: 1.5rem;
+    width: 100%;
+    display: table;
+  }
+  .app__navbar-start {
+  background-color: rgb(94, 94, 201);
+  border-radius: 20px;
+  padding: 5px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+}
