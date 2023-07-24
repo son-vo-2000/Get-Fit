@@ -2,14 +2,14 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import MainApp from "./MainApp";
-import Header from "./Header";
+import Header from "./components/Header/Header";
 import ClientExercises from "./ClientExercises";
-import './styles/App.css'
+import Navbar from "./components/Navbar/Navbar";
 
 function App(props) {
   return (
     <main>
-      <Header />
+      <Navbar />
       <Routes>
         <Route exact path="/" Component={Home} />
         <Route path="/main" Component={MainApp} />
