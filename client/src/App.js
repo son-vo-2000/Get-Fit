@@ -2,7 +2,6 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import MainApp from "./MainApp";
-import Header from "./components/Header/Header";
 import ClientExercises from "./ClientExercises";
 import Navbar from "./components/Navbar/Navbar";
 
