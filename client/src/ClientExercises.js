@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import AddExerciseModal from "./AddExerciseModal";
 import "./styles/Exercises.css";
 import EditExerciseModal from "./EditExerciseModal";
+import { Link } from "react-router-dom";
 
 function ClientExercises() {
   const [exerciseName, setExcerciseName] = useState("");
@@ -146,6 +147,9 @@ function ClientExercises() {
         index={editIndex}
       />
       <section className="exercise-top-section">
+        <Link to='/main'>
+          <i class="fa-solid fa-chevron-left"></i>
+        </Link>
         <div>
           <h1>{client.name}</h1>
         </div>
@@ -165,9 +169,9 @@ function ClientExercises() {
             <tr key={index}>
               <td>{card.name}</td>
               <td>{card.duration}</td>
-              <td>
+              <td className="exercise__btns">
                 <button onClick={() => handleDeleteCard(index)}>Delete</button>
-                <button onClick={() => toggleEditModal(index)}>edit</button>
+                <button onClick={() => toggleEditModal(index)}>Edit</button>
               </td>
             </tr>
           ))}

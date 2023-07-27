@@ -7,7 +7,6 @@ function About(props) {
   const [expand, setExpand] = useState(false);
   const [expand2, setExpand2] = useState(false);
   const [expand3, setExpand3] = useState(false);
-
   const [expand4, setExpand4] = useState(false);
 
   const toggleCard = (card) => {

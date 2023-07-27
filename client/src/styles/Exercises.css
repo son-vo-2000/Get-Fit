@@ -54,3 +54,20 @@
   border-bottom: 1px solid #ddd;
   padding: 8px;
 }
+
+.exercise__btns{
+  display: flex;
+  align-items: center;
+  gap: 30px
+}
+.exercise__btns button{
+  background: transparent;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  
+}
+.exercise__btns button:hover{
+  color: rgb(94, 94, 201);
+}
