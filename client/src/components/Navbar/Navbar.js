@@ -6,32 +6,50 @@ import { useState } from "react";
 
 function Navbar(props) {
   const [toggle, setToggle] = useState(false);
+  const [activePage, setActivePage] = useState('')
 
   const handleToggle = () => {
     setToggle(!toggle);
   };
 
+  const handleActivePage = (page) => {
+    setActivePage(page);
+    setToggle(!toggle);
+  }
+
   return (
     <nav className="app__navbar">
       <div className="app__navbar-logo">
-        <Link to="/" alt="logo">
+        <Link to="/" alt="logo" onClick={() => handleActivePage("home")}>
           <img src={logo} />
           GetFit
         </Link>
       </div>
       <ul id={toggle ? "active" : ""} className="app__navbar-menu">
         <li>
-          <Link onClick={toggle ? handleToggle : null} to="/">
+          <Link
+            className={activePage === "home" ? "pageActive" : ""}
+            onClick={() => handleActivePage("home")}
+            to="/"
+          >
             Home
           </Link>
         </li>
         <li>
-          <Link onClick={toggle ? handleToggle : null} to="/about">
+          <Link
+            className={activePage === "about" ? "pageActive" : ""}
+            onClick={() => handleActivePage("about")}
+            to="/about"
+          >
             About
           </Link>
         </li>
         <li>
-          <Link onClick={toggle ? handleToggle : null} to="/contact">
+          <Link
+            className={activePage === "contact" ? "pageActive" : ""}
+            onClick={() => handleActivePage("contact")}
+            to="/contact"
+          >
             Contact
           </Link>
         </li>

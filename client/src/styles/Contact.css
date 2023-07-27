@@ -1,0 +1,137 @@
+.contact {
+  display: flex;
+  width: 80%;
+  margin: auto;
+  height: auto;
+}
+.contact__card {
+  border-radius: 20px;
+  background-color: #fff;
+  padding: 50px 40px;
+  flex: 1;
+  display: flex;
+  align-content: center;
+  margin-top: 30px;
+}
+
+.contact__card-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-right: 60px;
+  gap: 10px;
+}
+.contact__card-left h1,
+p {
+  margin: 0px;
+  padding: 0px;
+}
+.contact__card-left h1 {
+  color: rgb(94, 94, 201);
+}
+.contact__card-left p {
+  font-size: 0.8rem;
+  margin-bottom: 20px;
+}
+.contact__card-left input,
+textarea {
+  padding: 20px 12px;
+  background-color: rgb(234, 243, 243);
+  outline: none;
+  border: none;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+.contact__card-left textarea {
+  height: 120px;
+}
+.contact__card-left button {
+  font-size: 1.2rem;
+  padding: 10px 0px;
+  cursor: pointer;
+  background-color: rgb(94, 94, 201);
+  color: white;
+  border: none;
+}
+
+.contact__card-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.contact__banner {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.contact__banner img {
+  height: 300px;
+}
+
+.contact__infors {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+.contact__infors-item {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  font-size: 1rem;
+}
+.contact__infors-item .fa-solid {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 100%;
+  color: rgb(94, 94, 201);
+}
+
+.contact__social {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 50px;
+}
+.contact__social-social {
+  background-color: rgb(94, 94, 201);
+  display: flex;
+  flex-direction: column;
+  border-bottom-right-radius: 25px;
+  border-top-right-radius: 10px;
+
+  padding: 15px 20px;
+  gap: 20px;
+}
+.contact__social-social a {
+  color: white;
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 960px) {
+  .contact {
+    display: flex;
+    flex-direction: column;
+  }
+  .contact__card {
+    display: flex;
+    flex-direction: column;
+  }
+  .contact__card-left {
+    margin: 0px;
+    margin-bottom: 40px;
+  }
+  .contact__social-social {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 0px;
+  }
+}

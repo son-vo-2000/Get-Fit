@@ -70,7 +70,9 @@ a {
 .app__navbar-icon {
   display: none;
 }
-
+.pageActive{
+  border-bottom: 4px solid rgb(94, 94, 201);
+}
 @media screen and (max-width: 960px) {
   .app__navbar {
     display: flex;
