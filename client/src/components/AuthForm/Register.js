@@ -28,7 +28,7 @@ const Register = () => {
         return;
       }
 
-      const response = await fetch("http://localhost:5000/auth/register",{
+      const response = await fetch("https://getfit-api.onrender.com/auth/register",{
         method: "POST",
         body: JSON.stringify(input),
         headers: { "Content-Type": "application/json" },

@@ -20,7 +20,7 @@ function MainApp() {
     // remember fectch return object that has json method
     // so u need to convert json
     //
-    const allClients = await fetch("http://localhost:5000/clients",{
+    const allClients = await fetch("https://getfit-api.onrender.com/clients",{
       method:"POST",
       headers: { "Content-Type": "application/json" },
       body:JSON.stringify({userId})
@@ -53,7 +53,7 @@ function MainApp() {
 
     // talk to the back-end at /clients
     // get new client and convert from json
-    const newClient = await fetch("http://localhost:5000/clients/create", {
+    const newClient = await fetch("https://getfit-api.onrender.com/clients/create", {
       method: "POST",
       body: JSON.stringify({ input }),
       headers: { "Content-Type": "application/json" },
@@ -68,7 +68,7 @@ function MainApp() {
 
   // delete client
   const handleDelete = async (clientId) => {
-    await fetch(`http://localhost:5000/clients/${clientId}`, {
+    await fetch(`https://getfit-api.onrender.com/clients/${clientId}`, {
       method: "DELETE",
     });
 

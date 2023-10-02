@@ -23,7 +23,7 @@ function ClientExercises() {
       // so u need to convert json
       //
       const selectedClient = await fetch(
-        `http://localhost:5000/clients/${clientId}/exercises`,
+        `https://getfit-api.onrender.com/clients/${clientId}/exercises`,
       ).then((reponse) => reponse.json());
 
       setClient(selectedClient);
@@ -60,7 +60,7 @@ function ClientExercises() {
     }
 
     const serverCard = await fetch(
-      `http://localhost:5000/clients/${clientId}/exercises`,
+      `https://getfit-api.onrender.com/clients/${clientId}/exercises`,
       {
         method: "POST",
         body: JSON.stringify({ exerciseName, duration }),
@@ -77,7 +77,7 @@ function ClientExercises() {
   const handleDeleteCard = async (index) => {
     if (!clientId) return;
     const updatedCards = await fetch(
-      `http://localhost:5000/clients/${clientId}/exercises/${index}`,
+      `https://getfit-api.onrender.com/clients/${clientId}/exercises/${index}`,
       {
         method: "DELETE",
       },
@@ -100,7 +100,7 @@ function ClientExercises() {
     }
 
     const updatedCards = await fetch(
-      `http://localhost:5000/clients/${clientId}/exercises/${editIndex}`,
+      `https://getfit-api.onrender.com/clients/${clientId}/exercises/${editIndex}`,
       {
         method: "PUT",
         body: JSON.stringify({ exerciseName, duration }),

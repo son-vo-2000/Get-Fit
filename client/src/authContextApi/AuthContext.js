@@ -9,7 +9,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const login = async (input) => {
     const response = await fetch(
-      `http://localhost:5000/auth/login`,{
+      `https://getfit-api.onrender.com/auth/login`,{
         method: "POST",
         headers: {"Content-Type" : "application/json"},
         body: JSON.stringify(input),
@@ -27,7 +27,7 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   const logout = async () => {
-    await fetch("http://localhost:5000/auth/logout",{
+    await fetch("https://getfit-api.onrender.com/auth/logout",{
         method: "POST"
     })
     setCurrentUser(null);
