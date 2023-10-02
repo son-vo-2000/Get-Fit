@@ -37,21 +37,21 @@ function Footer(props) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <i class="fa-brands fa-twitter"></i>
+                <i className="fa-brands fa-twitter"></i>
               </a>
               <a
                 href="https://www.freecodecamp.org/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <i class="fa-brands fa-instagram"></i>
+                <i className="fa-brands fa-instagram"></i>
               </a>
               <a
                 href="https://www.freecodecamp.org/ "
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <i class="fa-brands fa-linkedin"></i>
+                <i className="fa-brands fa-linkedin"></i>
               </a>
             </div>
           </div>

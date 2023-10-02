@@ -1,8 +1,14 @@
+.contact__page{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 .contact {
   display: flex;
-  width: 80%;
+  width: 1200px;
+  margin: 0px 20px;
   margin: auto;
-  height: auto;
+  
 }
 .contact__card {
   border-radius: 20px;
@@ -111,10 +117,18 @@ textarea {
   font-size: 1.2rem;
 }
 
+@media screen and (max-width: 1280px){
+  .contact{
+    width: 900px;
+  }
+}
 @media screen and (max-width: 960px) {
   .contact {
     display: flex;
     flex-direction: column;
+    margin: 0px 20px;
+    width: 80%;
+    margin: auto;
   }
   .contact__card {
     display: flex;

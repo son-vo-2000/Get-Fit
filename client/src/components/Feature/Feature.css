@@ -2,8 +2,11 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-top: 100px;
   align-items: center;
+  gap: 50px;
+  width: 100%;
+  padding: 20rem 0rem;
+  box-sizing: border-box;
 }
 .feature__title {
   font-size: 2.4rem;
@@ -12,8 +15,9 @@
 
 .feature__cards {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
+  gap: 80px;
   width: 100%;
 }
 .card {
@@ -62,34 +66,36 @@
   cursor: default;
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1270px) {
  .card {
     background-color: transparent;
-    width: 150px;
-    height: 150px;
+  
     perspective: 1000px;
+  }
+  .feature{
+    padding: 6rem;
   }
   .card__front img {
     height: 90px;
     width: 90px;
     padding: 20px;
   }
-  
-}
-
-@media screen and (max-width: 1150px) {
   .feature__cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 40px;
+    
   }
-  
 }
+
 
 @media screen and (max-width: 640px) {
   .feature__cards {
     display: flex;
     flex-direction: column;
-    gap:30px
+    gap:60px
+  }
+  .feature__title{
+    font-size: 1.3rem;
   }
 }

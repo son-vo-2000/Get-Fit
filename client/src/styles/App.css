@@ -5,17 +5,16 @@ body {
   background-color: #ffffff;
   background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
 }
 
-main {
-}
 
 .App {
-  min-height: 86.5vh;
   overflow-y: auto;
   font-size: 1.2rem;
-  width: 80%;
-  margin: auto;
+  width: 100%;
+  padding:3rem 10rem;
+  box-sizing: border-box;
 }
 .top-section {
   display: flex;
@@ -60,8 +59,9 @@ main {
 }
 
 .home__body{
-  width: 80%;
-  margin: auto;
+  width: 100%;
+  padding:10rem;
+  box-sizing: border-box;
 }
 
 .scroll-to-top-button {
@@ -84,4 +84,33 @@ main {
 
 .scroll-to-top-button:hover {
   background-color: #0056b3;
+}
+@media screen and (max-width: 1270px){
+  .home__body{
+    padding:  6rem;
+  }
+  .App{
+    padding:3rem 6rem;
+
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .home__body{
+    padding: 4rem;
+  }
+  .App{
+    padding:3rem 4rem;
+
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .home__body{
+    padding: 2rem;
+  }
+  .App{
+    padding:2rem;
+
+  }
 }

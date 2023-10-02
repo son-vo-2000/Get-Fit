@@ -8,14 +8,14 @@ import { Link } from "react-router-dom";
 function ClientExercises() {
   const [exerciseName, setExcerciseName] = useState("");
   const [duration, setDuration] = useState("");
-  const [completed, setCompleted] = useState(false);
+
   const [cards, setCards] = useState([]);
   const [client, setClient] = useState("");
   const [modal, setModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
   const { clientId } = useParams();
   const [editIndex, setEditIndex] = useState("");
-
+  
   // fetch all exercise cards from the backend
   useEffect(() => {
     async function fetchCards() {
@@ -32,9 +32,33 @@ function ClientExercises() {
     fetchCards();
   }, []);
 
-  // create new cards
+  const isNumber = (string) => {
+    // Check if the string is empty.
+    if (string.length === 0) {
+      return false;
+    }
+
+    // Check if each character in the string is a digit.
+    for (let i = 0; i < string.length; i++) {
+      if (!/[0-9]/.test(string[i])) {
+        return false;
+      }
+    }
+    // Return true.
+    return true;
+  }
+
+
+  // CREATE NEW CARD
   const handleCreateExercise = async (event) => {
     event.preventDefault();
+
+    if(isNumber(duration) === false){
+      alert("Only accept number in duration");
+      setModal(false)
+      return;
+    }
+
     const serverCard = await fetch(
       `http://localhost:5000/clients/${clientId}/exercises`,
       {
@@ -49,7 +73,7 @@ function ClientExercises() {
     toggleModal();
   };
 
-  // delete card
+  // DELETE CARD
   const handleDeleteCard = async (index) => {
     if (!clientId) return;
     const updatedCards = await fetch(
@@ -63,15 +87,22 @@ function ClientExercises() {
     setCards(updatedCards.exercises);
   };
 
-  //Edit card
+
+  // UPDATE EXERCISE
   const handleEditCard = async (event) => {
     event.preventDefault();
     if (!clientId) return;
 
+    if(isNumber(duration) === false){
+      alert("Only accept number in duration");
+      setModal(false)
+      return;
+    }
+
     const updatedCards = await fetch(
       `http://localhost:5000/clients/${clientId}/exercises/${editIndex}`,
       {
-        method: "POST",
+        method: "PUT",
         body: JSON.stringify({ exerciseName, duration }),
         headers: { "Content-Type": "application/json" },
       },
@@ -125,6 +156,14 @@ function ClientExercises() {
     setExcerciseName("");
   };
 
+  const handleToggleComplete = async (index) => {
+     const response = await fetch(
+      `http://localhost:5000/clients/${clientId}/exercises/${index}/complete`,{
+        method:"PUT",
+      });
+     const data = await response.json();
+     setCards(data.exercises)
+  }
   return (
     <div className="App">
       <AddExerciseModal
@@ -148,7 +187,7 @@ function ClientExercises() {
       />
       <section className="exercise-top-section">
         <Link to='/main'>
-          <i class="fa-solid fa-chevron-left"></i>
+          <i className="fa-solid fa-chevron-left"/>
         </Link>
         <div>
           <h1>{client.name}</h1>
@@ -160,20 +199,25 @@ function ClientExercises() {
         <thead className="thead-light">
           <tr>
             <th>Description</th>
-            <th>Duration(in minutes)</th>
+            <th>Duration (minutes)</th>
+            <th>Completed</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {cards.map((card, index) => (
             <tr key={index}>
-              <td>{card.name}</td>
-              <td>{card.duration}</td>
+              <td className={`${card.isCompleted && "completedExercise" }`}>{card.name}</td>
+              <td className={`${card.isCompleted && "completedExercise" }`}>{card.duration}</td>
+              <td>
+                <input type="checkbox" checked={card.isCompleted ? true : false} onChange={() => handleToggleComplete(index)}/>
+              </td>
               <td className="exercise__btns">
                 <button onClick={() => handleDeleteCard(index)}>Delete</button>
                 <button onClick={() => toggleEditModal(index)}>Edit</button>
               </td>
             </tr>
+            
           ))}
         </tbody>
       </table>

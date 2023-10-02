@@ -1,0 +1,93 @@
+.auth__page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+.form{
+    padding: 50px 100px;
+    width: 700px;
+    margin: 40px 20px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.form__header{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.form__logo{
+    display: flex;
+    align-items: center;
+    width: 130px;
+    gap: 10px;
+}
+.form__logo img{
+    height: 50px;
+    width: 50px;
+}
+.form__logo h3{
+    color: rgb(94, 94, 201);
+}
+.form__title{
+    display: flex;
+    flex-direction: column;
+    gap:6px;
+}
+.form__title h2{
+    margin: 0px;
+}
+
+#form__body{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+}
+.input_wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 5px;
+}
+.input_wrapper input{
+    padding: 10px;
+   margin: 0px;
+   box-sizing: border-box;
+   width: 100%;
+    font-size: 1rem;
+}
+.input_wrapper label{
+    font-weight: 500;
+}
+.form__btn{
+    width: 100%;
+    padding: 15px 0px;
+    background-color: #191c3b;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 30px;
+}
+.form__footer a{
+    font-weight: 500;
+}
+.form__error-message{
+    color: red;
+}
+@media screen and (max-width: 960px) {
+    .form{
+        padding: 10px 20px;
+    }
+    .form__logo img{
+        height: 30px;
+        width: 30px;
+    }
+}

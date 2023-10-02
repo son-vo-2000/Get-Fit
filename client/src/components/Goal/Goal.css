@@ -1,15 +1,19 @@
 .goal {
   display: flex;
-  margin-top: 200px;
+  width: 100%;
+  padding-top: 12rem;
+  gap: 50px;
+  align-items: center;
 }
 .goal__banner {
   flex: 1;
   display: flex;
   align-items: flex-start;
+  justify-content: center;
 }
 .goal__banner img {
-  height: 80%;
-  width: 70%;
+  height: 70%;
+  width: 60%;
 }
 .goal__content {
   flex: 1;
@@ -30,7 +34,6 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 2rem;
-  margin: 0px;
   width: 100%;
   margin-bottom: 30px;
 }

@@ -1,39 +1,61 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Clients from "./Clients";
 import "./styles/App.css";
 import AddClientModal from "./AddClientModal";
+import {useNavigate } from "react-router-dom";
+import { AuthContext } from "./authContextApi/AuthContext";
 
 function MainApp() {
   const [clients, setClients] = useState([]);
   const [clientName, setClientName] = useState("");
   const [modal, setModal] = useState(false);
   const [loading, setLoading] = useState(true);
+  const {currentUser} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const userId = currentUser?._id;
 
+  
   // fetch all clients from the backend
+  const fetchClients = async () => {
+    // remember fectch return object that has json method
+    // so u need to convert json
+    //
+    const allClients = await fetch("http://localhost:5000/clients",{
+      method:"POST",
+      headers: { "Content-Type": "application/json" },
+      body:JSON.stringify({userId})
+    }).then(
+      (reponse) => reponse.json(),
+    );
+    setClients(allClients);
+  }
+
   useEffect(() => {
+    if(!currentUser){
+      navigate("/login");
+      return;
+    };
+
     setLoading(true);
-    async function fetchClients() {
-      // remember fectch return object that has json method
-      // so u need to convert json
-      //
-      const allClients = await fetch("http://localhost:5000/clients").then(
-        (reponse) => reponse.json(),
-      );
-      setClients(allClients);
-    }
     fetchClients();
     setLoading(false);
   }, []);
+
 
   // create new client
   const handleCreateClient = async (event) => {
     event.preventDefault();
 
+    const input = {
+      clientName,
+      userId
+    }
+
     // talk to the back-end at /clients
     // get new client and convert from json
-    const newClient = await fetch("http://localhost:5000/clients", {
+    const newClient = await fetch("http://localhost:5000/clients/create", {
       method: "POST",
-      body: JSON.stringify({ clientName }),
+      body: JSON.stringify({ input }),
       headers: { "Content-Type": "application/json" },
     }).then((reponse) => reponse.json());
 
@@ -74,7 +96,7 @@ function MainApp() {
   return (
     <div className="App">
       <div className="top-section">
-        <h2>My Clients</h2>
+        <h2>{currentUser?.username}'s Clients</h2>
         <button onClick={toggleModal}>Add Client</button>
       </div>
       <AddClientModal
@@ -85,7 +107,7 @@ function MainApp() {
         open={modal}
       />
       {loading ? (
-        <div>loading...</div>
+        <div>loading clients...</div>
       ) : (
         <Clients clients={clients} handleDelete={handleDelete} />
       )}

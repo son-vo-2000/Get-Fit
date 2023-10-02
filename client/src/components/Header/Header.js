@@ -4,7 +4,7 @@ import "./Header.css";
 
 function Header(props) {
   return (
-    <div className="header">
+    <div className="hero">
       <div className="header__content">
         <h1>Lorem ipsum odor amet, consectetuer.</h1>
         <p>

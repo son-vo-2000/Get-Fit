@@ -1,12 +1,14 @@
 // create Schema a.k.a footprint
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
+const ClientSchema = new Schema({
   name: String,
-  exercises: [{ name: String, duration: String }],
+  exercises: [{ name: String, duration: String, isCompleted: {type:Boolean, default: false} }],
+  user_id: { type: String, require:true},
 });
 
-const UserModel = mongoose.model("User", UserSchema);
 
-module.exports = UserModel;
+const Client = mongoose.model("Client", ClientSchema);
+
+export default Client;

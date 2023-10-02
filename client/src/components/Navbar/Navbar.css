@@ -3,13 +3,19 @@ a {
   list-style: none;
   color: black;
 }
+.header{
+  width: 100%;
+  padding: 2rem 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
 .app__navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 0px;
-  width: 80%;
-  margin: auto;
+  width: 100%;
 }
 .app__navbar-logo a {
   display: flex;
@@ -26,15 +32,10 @@ a {
 .app__navbar-menu {
   display: flex;
   align-items: center;
-  gap: 50px;
   flex: 1;
-  justify-content: center;
   font-size: 1.2rem;
   font-weight: 500;
-}
-.app__navbar-menu li {
-  display: flex;
-  flex-direction: column;
+  justify-content: space-between;
 }
 .app__navbar-menu li:after {
   content: "";
@@ -56,15 +57,10 @@ a {
   color: rgb(94, 94, 201);
 }
 
-.app__navbar-start {
-  background-color: rgb(94, 94, 201);
-  border-radius: 20px;
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-.app__navbar-start a {
-  color: white;
+.navbar__items{
+  display: flex;
+  align-items: center;
+  gap: 50px;
 }
 
 .app__navbar-icon {
@@ -73,11 +69,73 @@ a {
 .pageActive{
   border-bottom: 4px solid rgb(94, 94, 201);
 }
+.user {
+  position: relative;
+}
+.user__infor{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0px 5px;
+  cursor: pointer;
+  width: 50px;
+}
+.user__functions{
+  position: absolute;
+  right: 0;
+  display: none;
+  background-color: white;
+  padding: 20px;
+  width: 120px;
+}
+.user__funcitons-show{
+  display: block;
+  z-index: 999;
+}
+.user__functions-container{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.no__user{
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.no__user ul{
+  display: flex;
+  gap:30px;
+  align-items: center;
+}
+.user-wrapper{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+@media screen and (max-width: 1270px){
+  .header{
+    padding: 2rem 6rem;
+  }
+}
+
 @media screen and (max-width: 960px) {
-  .app__navbar {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
+  .header{
+    padding: 2rem 4rem;
+  }
+  .app__navbar{
+    position: relative;
+  }
+  .navbar__items{
+    flex-direction: column;
+    gap: 0px;
+    font-size: 1rem;
+    align-items: end;
+  }
+  .no__user{
+    flex-direction: column;
+    gap: 0px;
   }
   .app__navbar-icon {
     display: block;
@@ -97,19 +155,17 @@ a {
     display: none;
     opacity: 0;
     flex-direction: column;
-    width: 30%;
     position: absolute;
-    top: 50px;
-    gap: 0px;
+    top: 30px;
+    right: 0;
     text-align: center;
     background-color: rgb(94, 94, 201);
+    justify-content: space-evenly;
+    align-items: center;
   }
   #active {
     z-index: 1;
-    right: 30px;
     display: flex;
-    justify-content: center;
-    align-items: center;
     opacity: 1;
   }
   .app__navbar-menu li {
@@ -120,11 +176,11 @@ a {
   .app__navbar-menu li a {
     color: white;
   }
-  .app__navbar-start {
-    background-color: rgb(94, 94, 201);
-    border-radius: 20px;
-    padding: 5px 15px;
-    font-size: 1rem;
-    cursor: pointer;
+}
+
+@media screen and (max-width: 740px) {
+  .header{
+    padding: 2rem;
   }
+
 }

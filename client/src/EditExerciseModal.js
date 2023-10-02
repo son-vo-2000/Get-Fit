@@ -21,7 +21,7 @@ function EditExerciseModal(props) {
         </div>
         <div className="form-body-section">
           <div className="input-container">
-            <label htmlFor="exercise-name">New Exercise</label>
+            <label htmlFor="exercise-name">Update Name</label>
             <input
               id="exercise-name"
               type="text"

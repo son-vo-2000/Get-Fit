@@ -23,7 +23,8 @@ function About(props) {
 
   return (
     <>
-      <div className="about">
+      <main className="about">
+        <div className="about__container">
         <div className="about__goal">
           <div className="about__goal-content">
             <h1>Our Goal</h1>
@@ -34,15 +35,15 @@ function About(props) {
               dignissim elementum.
             </p>
             <div className="about__goal-check">
-              <i class="fa-solid fa-check"></i>
+              <i className="fa-solid fa-check"></i>
               <p>Lorem ipsum odor amet, consectetuer adipiscing</p>
             </div>
             <div className="about__goal-check">
-              <i class="fa-solid fa-check"></i>
+              <i className="fa-solid fa-check"></i>
               <p>Lorem ipsum odor amet, consectetuer </p>
             </div>
             <div className="about__goal-check">
-              <i class="fa-solid fa-check"></i>
+              <i className="fa-solid fa-check"></i>
               <p>Lorem ipsum odor consectetuer adipiscing</p>
             </div>
           </div>
@@ -67,9 +68,9 @@ function About(props) {
                 </div>
                 <div onClick={() => toggleCard(1)}>
                   {expand ? (
-                    <i class="fa-solid fa-caret-right"></i>
+                    <i className="fa-solid fa-caret-right"></i>
                   ) : (
-                    <i class="fa-solid fa-caret-down"></i>
+                    <i className="fa-solid fa-caret-down"></i>
                   )}
                 </div>
               </div>
@@ -79,21 +80,21 @@ function About(props) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <i class="fa-brands fa-twitter"></i>
+                  <i className="fa-brands fa-twitter"></i>
                 </a>
                 <a
                   href="https://www.freecodecamp.org/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <i class="fa-brands fa-instagram"></i>
+                  <i className="fa-brands fa-instagram"></i>
                 </a>
                 <a
                   href="https://www.freecodecamp.org/ "
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <i class="fa-brands fa-linkedin"></i>
+                  <i className="fa-brands fa-linkedin"></i>
                 </a>
               </div>
             </div>
@@ -109,9 +110,9 @@ function About(props) {
                 </div>
                 <div onClick={() => toggleCard(2)}>
                   {expand2 ? (
-                    <i class="fa-solid fa-caret-right"></i>
+                    <i className="fa-solid fa-caret-right"></i>
                   ) : (
-                    <i class="fa-solid fa-caret-down"></i>
+                    <i className="fa-solid fa-caret-down"></i>
                   )}
                 </div>
               </div>
@@ -121,21 +122,21 @@ function About(props) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <i class="fa-brands fa-twitter"></i>
+                  <i className="fa-brands fa-twitter"></i>
                 </a>
                 <a
                   href="https://www.freecodecamp.org/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <i class="fa-brands fa-instagram"></i>
+                  <i className="fa-brands fa-instagram"></i>
                 </a>
                 <a
                   href="https://www.freecodecamp.org/ "
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <i class="fa-brands fa-linkedin"></i>
+                  <i className="fa-brands fa-linkedin"></i>
                 </a>
               </div>
             </div>
@@ -151,9 +152,9 @@ function About(props) {
                 </div>
                 <div onClick={() => toggleCard(3)}>
                   {expand3 ? (
-                    <i class="fa-solid fa-caret-right"></i>
+                    <i className="fa-solid fa-caret-right"></i>
                   ) : (
-                    <i class="fa-solid fa-caret-down"></i>
+                    <i className="fa-solid fa-caret-down"></i>
                   )}
                 </div>
               </div>
@@ -163,21 +164,21 @@ function About(props) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <i class="fa-brands fa-twitter"></i>
+                  <i className="fa-brands fa-twitter"></i>
                 </a>
                 <a
                   href="https://www.freecodecamp.org/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <i class="fa-brands fa-instagram"></i>
+                  <i className="fa-brands fa-instagram"></i>
                 </a>
                 <a
                   href="https://www.freecodecamp.org/ "
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <i class="fa-brands fa-linkedin"></i>
+                  <i className="fa-brands fa-linkedin"></i>
                 </a>
               </div>
             </div>
@@ -193,9 +194,9 @@ function About(props) {
                 </div>
                 <div onClick={() => toggleCard(4)}>
                   {expand4 ? (
-                    <i class="fa-solid fa-caret-right"></i>
+                    <i className="fa-solid fa-caret-right"></i>
                   ) : (
-                    <i class="fa-solid fa-caret-down"></i>
+                    <i className="fa-solid fa-caret-down"></i>
                   )}
                 </div>
               </div>
@@ -205,27 +206,28 @@ function About(props) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <i class="fa-brands fa-twitter"></i>
+                  <i className="fa-brands fa-twitter"></i>
                 </a>
                 <a
                   href="https://www.freecodecamp.org/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <i class="fa-brands fa-instagram"></i>
+                  <i className="fa-brands fa-instagram"></i>
                 </a>
                 <a
                   href="https://www.freecodecamp.org/ "
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <i class="fa-brands fa-linkedin"></i>
+                  <i className="fa-brands fa-linkedin"></i>
                 </a>
               </div>
             </div>
           </div>
         </div>
-      </div>
+        </div>
+      </main>
       <Footer />
     </>
   );

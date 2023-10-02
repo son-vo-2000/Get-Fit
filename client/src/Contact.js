@@ -9,7 +9,7 @@ function Contact(props) {
   const [contactDescription, setContactDescription] = useState("");
 
   return (
-    <>
+    <div className="contact__page">
       <div className={`contact`}>
         <div className="contact__card">
           <form className="contact__card-left">
@@ -38,15 +38,15 @@ function Contact(props) {
             </div>
             <div className="contact__infors">
               <div className="contact__infors-item">
-                <i class="fa-solid fa-location-dot"></i>
+                <i className="fa-solid fa-location-dot"></i>
                 <p>258 Washington Avenue</p>
               </div>
               <div className="contact__infors-item">
-                <i class="fa-solid fa-phone"></i>
+                <i className="fa-solid fa-phone"></i>
                 <p>(123) 456 - 7892</p>
               </div>
               <div className="contact__infors-item">
-                <i class="fa-solid fa-envelope"></i>
+                <i className="fa-solid fa-envelope"></i>
                 <p>jam2022@gmail.com</p>
               </div>
             </div>
@@ -59,27 +59,27 @@ function Contact(props) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i class="fa-brands fa-twitter"></i>
+              <i className="fa-brands fa-twitter"></i>
             </a>
             <a
               href="https://www.freecodecamp.org/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i class="fa-brands fa-instagram"></i>
+              <i className="fa-brands fa-instagram"></i>
             </a>
             <a
               href="https://www.freecodecamp.org/ "
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i class="fa-brands fa-linkedin"></i>
+              <i className="fa-brands fa-linkedin"></i>
             </a>
           </div>
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 

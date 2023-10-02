@@ -13,7 +13,7 @@ function AddClientModal({
     <div className="modal-background">
       <form onSubmit={handleCreateClient} className="modal-container">
         <div className="form-top-section">
-          <i class="fa-solid fa-x" onClick={toggleModal}></i>
+          <i className="fa-solid fa-x" onClick={toggleModal}/>
         </div>
         <div className="form-body-section">
           <div className="input-container">

@@ -1,13 +1,14 @@
-.header {
+.hero {
   display: flex;
-  margin-top: 40px;
+  width: 100%;
+  padding-top: 0rem;
+  padding-bottom: 6rem;
 }
 .header__content {
-  padding-right: 40px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  flex: 1;
+  width: 50%;
 }
 .header__content h1 {
   font-size: 2.4rem;
@@ -43,19 +44,27 @@
   margin-right: 20px;
 }
 .header__banner {
-  flex: 1;
+  flex:1;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
 }
-
+@media screen and (max-width: 1270px) {
+  .header__banner img{
+    height: 350px;
+  }
+}
 @media screen and (max-width: 960px) {
-  .header {
-    display: flex;
+  .hero {
     flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .header__content{
+    width: 100%;
   }
 
   .header__banner img {
-    margin-top: 20px;
+    margin-top: 80px;
   }
 }
