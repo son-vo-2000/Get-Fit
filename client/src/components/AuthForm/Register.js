@@ -52,7 +52,7 @@ const Register = () => {
       <div className='form'>
         <div className='form__header'>
             <Link to="/" alt="logo" className='form__logo'>
-              <img src={logo} />
+              <img src={logo} alt='logo'/>
               <h3>GetFit</h3>
             </Link>
           <div className='form__title'>

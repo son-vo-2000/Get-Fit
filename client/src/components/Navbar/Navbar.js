@@ -67,7 +67,7 @@ function Navbar(props) {
       <nav className="app__navbar">
       <div className="app__navbar-logo">
         <Link to="/" alt="logo" onClick={() => handleActivePage("home")}>
-          <img src={logo} />
+          <img src={logo} alt="logo"/>
           GetFit
         </Link>
       </div>

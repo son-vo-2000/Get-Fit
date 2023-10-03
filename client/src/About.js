@@ -59,7 +59,7 @@ function About(props) {
             <div className={`about__member-card`}>
               <div className="about__member-card-content">
                 <div className="about__member-card-img">
-                  <img src={banner} />
+                  <img src={banner} alt="member"/>
                 </div>
                 <div className={`about__member-card-infor`}>
                   <h2>Jame Bond</h2>
@@ -101,7 +101,7 @@ function About(props) {
             <div className={`about__member-card`}>
               <div className="about__member-card-content">
                 <div className="about__member-card-img">
-                  <img src={banner} />
+                  <img src={banner} alt="member"/>
                 </div>
                 <div className={`about__member-card-infor`}>
                   <h2>Jame Bond</h2>
@@ -143,7 +143,7 @@ function About(props) {
             <div className={`about__member-card`}>
               <div className="about__member-card-content">
                 <div className="about__member-card-img">
-                  <img src={banner} />
+                  <img src={banner} alt="member"/>
                 </div>
                 <div className={`about__member-card-infor`}>
                   <h2>Jame Bond</h2>
@@ -185,7 +185,7 @@ function About(props) {
             <div className={`about__member-card`}>
               <div className="about__member-card-content">
                 <div className="about__member-card-img">
-                  <img src={banner} />
+                  <img src={banner}  alt="member"/>
                 </div>
                 <div className={`about__member-card-infor`}>
                   <h2>Jame Bond</h2>

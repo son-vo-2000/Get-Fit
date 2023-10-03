@@ -9,7 +9,6 @@ function EditExerciseModal(props) {
     open,
     toggleEditModal,
     handleEditCard,
-    index,
   } = props;
   if (!open) return null;
 

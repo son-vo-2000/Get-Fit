@@ -13,7 +13,7 @@ function Footer(props) {
         </div>
         <div className="footer__content">
           <div className="footer__logo">
-            <img src={logo} />
+            <img src={logo} alt='logo'/>
           </div>
           <div className="footer__info">
             <h1>About the website</h1>

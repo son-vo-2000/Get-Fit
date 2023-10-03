@@ -34,7 +34,7 @@ function Contact(props) {
           </form>
           <div className="contact__card-right">
             <div className="contact__banner">
-              <img src={contact} />
+              <img src={contact} alt="banner" />
             </div>
             <div className="contact__infors">
               <div className="contact__infors-item">
