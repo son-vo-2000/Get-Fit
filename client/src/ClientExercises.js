@@ -158,7 +158,7 @@ function ClientExercises() {
 
   const handleToggleComplete = async (index) => {
      const response = await fetch(
-      `http://localhost:5000/clients/${clientId}/exercises/${index}/complete`,{
+      `https://getfit-api.onrender.com/clients/${clientId}/exercises/${index}/complete`,{
         method:"PUT",
       });
      const data = await response.json();
